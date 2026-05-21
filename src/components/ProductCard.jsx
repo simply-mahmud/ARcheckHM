@@ -1,8 +1,57 @@
+import { useEffect, useRef, useState } from 'react'
+
 export default function ProductCard({ product, onOpenViewer }) {
+  const thumbnailRef = useRef(null)
+  const [thumbnailState, setThumbnailState] = useState('loading')
+
+  useEffect(() => {
+    setThumbnailState('loading')
+  }, [product.modelPath])
+
+  useEffect(() => {
+    const thumbnail = thumbnailRef.current
+    if (!thumbnail) return undefined
+
+    const handleLoad = () => setThumbnailState('loaded')
+    const handleError = () => setThumbnailState('error')
+
+    thumbnail.addEventListener('load', handleLoad)
+    thumbnail.addEventListener('error', handleError)
+
+    return () => {
+      thumbnail.removeEventListener('load', handleLoad)
+      thumbnail.removeEventListener('error', handleError)
+    }
+  }, [product.modelPath])
+
   return (
     <article className="model-card">
-      <div className="model-preview" aria-hidden="true">
-        <span className="model-icon">3D</span>
+      <div className="model-preview">
+        {thumbnailState === 'loading' ? (
+          <div className="thumbnail-status" role="status">
+            Loading preview...
+          </div>
+        ) : null}
+
+        {thumbnailState === 'error' ? (
+          <div className="thumbnail-status thumbnail-error" role="status">
+            Preview unavailable
+          </div>
+        ) : null}
+
+        <model-viewer
+          ref={thumbnailRef}
+          class="model-thumbnail"
+          src={product.modelPath}
+          alt={`${product.name} thumbnail`}
+          camera-controls
+          auto-rotate
+          interaction-prompt="none"
+          shadow-intensity="0.75"
+          exposure="1"
+          environment-image="neutral"
+          reveal="auto"
+        />
       </div>
 
       <div className="model-copy">

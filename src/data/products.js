@@ -1,5 +1,12 @@
 export const products = [
   {
+    id: 'bee',
+    name: 'Bee',
+    category: 'Nature Model',
+    description: 'Preview a compact bee model with direct 3D controls and AR placement support.',
+    modelPath: '/models/Bee.model-viewer.glb',
+  },
+  {
     id: 'boat',
     name: 'Boat',
     category: 'Transport Model',
@@ -28,10 +35,45 @@ export const products = [
     modelPath: '/models/NeilArmstrong.glb',
   },
   {
+    id: 'potted-plant-01',
+    name: 'Potted Plant 01',
+    category: 'Decor Object',
+    description: 'Place a small potted plant model in 3D or AR for quick decor testing.',
+    modelPath: '/models/potted_plant_01.glb',
+  },
+  {
+    id: 'potted-plant-02',
+    name: 'Potted Plant 02',
+    category: 'Decor Object',
+    description: 'Compare a second potted plant variation in the same 3D preview flow.',
+    modelPath: '/models/potted_plant_02.glb',
+  },
+  {
+    id: 'potted-plant-04',
+    name: 'Potted Plant 04',
+    category: 'Decor Object',
+    description: 'View another plant form with live model controls and AR launch support.',
+    modelPath: '/models/potted_plant_04.glb',
+  },
+  {
+    id: 'simple-chair',
+    name: 'Simple Chair',
+    category: 'Furniture Preview',
+    description: 'Check a minimal chair form in a lightweight 3D preview before opening AR.',
+    modelPath: '/models/SimpleChair.glb',
+  },
+  {
     id: 'toy-train',
     name: 'Toy Train',
     category: 'Toy Showcase',
     description: 'Test a playful train model with simple 3D interaction and AR support.',
     modelPath: '/models/ToyTrain.glb',
+  },
+  {
+    id: 'wheelchair',
+    name: 'Wheelchair',
+    category: 'Mobility Model',
+    description: 'Preview a wheelchair model from all angles before opening the AR view.',
+    modelPath: '/models/wheelchair_01.glb',
   },
 ]
